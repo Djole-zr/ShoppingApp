@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+</head>
+<body>
+    <h1>Edit Item</h1>
+
+    <form action="/items/<%= item._id %>?_method=PATCH" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Item Name" id="name" value="<%= item.name %>">
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" placeholder="Item Quntity" id="quantity">
+        <br>
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+                <% for(let i=0; i<category.length; i++) { %> 
+                    <option value="<%= category[i]._id %>">
+                        <%= category[i].name %> 
+                    </option>
+                <% } %>
+        </select> <a href="/categories/new">Add New Category</a>
+        <br>
+        <button>Edit</button>
+    </form>
+
+    <a href="/lists">Home</a>
+
+
+    
+</body>
+</html>

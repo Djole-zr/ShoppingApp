@@ -9,17 +9,15 @@
 <body>
     <h1><%= list.name %></h1>
     <a href="/lists/<%= list._id %>/edit">Edit List</a>
-    <a href="/lists/"></a>
+    <a href="/lists/<%= list._id %>/items/new">Add Item</a>
     <ul>
-        <% if(list.items) { %>
+        
         <% for(let i = 0; i < list.items.length; i ++) { %> 
             <li>
-                <a href=""><%= list.items[i] %> </a>
+                <a href="/items/<%= list.items[i].id %>"><%= list.items[i].name %></a> - quantity: <%= list.items[i].quantity %>
             </li>
         <% } %>
-        <% } else { %> 
-            <li>No items</li>
-        <% } %> 
+        
 
     </ul>
 

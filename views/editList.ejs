@@ -11,7 +11,16 @@
 
     <form action="/lists/<%= list._id %>?_method=PATCH" method="POST">
         <label for="name">Name:</label>
-        <input type="name" name="name" placeholder="List Name" id="name" value="<%= list.name %> ">
+        <input type="text" name="name" placeholder="List Name" id="name" value="<%= list.name %> ">
+        <br>
+        <label for="shop">Shop:</label>
+        <select name="shop" id="shop">
+                <% for(let i=0; i<shop.length; i++) { %> 
+                    <option value="<%= shop[i]._id %>">
+                        <%= shop[i].name %> 
+                    </option>
+                <% } %>
+        </select> <a href="/shops/new">Add New Shop</a>
         <br>
         <button>Edit</button>
     </form>
