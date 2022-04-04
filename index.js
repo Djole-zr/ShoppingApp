@@ -52,6 +52,8 @@ app.patch('/lists/:id', async (req, res) => {
     res.redirect(`/lists/${list._id}`);
 })
 
+
+
 app.listen(3000, () => {
     console.log("pokrenut server")
 })
