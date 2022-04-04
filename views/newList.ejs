@@ -15,8 +15,11 @@
         <br>
         <label for="shop">Shop:</label>
         <select name="shop" id="shop">
-            <option value="Gomex">Gomex</option>
-            <option value="Roda">Roda</option>
+                <% for(let i=0; i<shop.length; i++) { %> 
+                    <option value="<%= shop[i]._id %>">
+                        <%= shop[i].name %> 
+                    </option>
+                <% } %>
         </select>
         <br>
         <button>Add</button>

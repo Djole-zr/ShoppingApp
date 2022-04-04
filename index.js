@@ -4,7 +4,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 
 const mongoose = require('mongoose');
-const List = require('./models/list')
+const { List, Shop } = require('./models/allModels')
 
 main().catch(err => console.log(err, 'ne radi'));
 
@@ -23,8 +23,9 @@ app.get('/lists', async (req, res) => {
     res.render('lists', { lists })
 })
 
-app.get('/lists/new', (req, res) => {
-    res.render('newList')
+app.get('/lists/new', async (req, res) => {
+    const shop = await Shop.find({});
+    res.render('newList', { shop })
 })
 
 app.post('/lists', async (req, res) => {
@@ -36,19 +37,19 @@ app.post('/lists', async (req, res) => {
 app.get('/lists/:id', async (req, res) => {
     const { id } = req.params;
     const list = await List.findById(id);
-    res.render('show', { list })
+    res.render('showList', { list })
 })
 
 app.get('/lists/:id/edit', async (req, res) => {
     const { id } = req.params;
     const list = await List.findById(id);
-    res.render('edit', { list })
+    res.render('editList', { list })
 })
 
-app.put('/lists/:id', async (req, res) => {
+app.patch('/lists/:id', async (req, res) => {
     const { id } = req.params;
     const list = await List.findByIdAndUpdate(id, req.body, { runValidators: true});
-    res.redirect(`/lists/${id}`);
+    res.redirect(`/lists/${list._id}`);
 })
 
 app.listen(3000, () => {

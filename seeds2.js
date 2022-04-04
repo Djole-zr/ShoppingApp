@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { List } = require('./models/allModels')
+const { Shop } = require('./models/allModels')
 
 main().catch(err => console.log(err, 'ne radi'));
 
@@ -8,18 +8,21 @@ async function main() {
 }
 
 
-const newLists = [
+const newShops = [
         {
-            name: 'ponedeljak',
-            shop: '624aef1770d0158eacad8a05'
+            name: 'Gomex',
+            address: 'Banatska bb',
+            city: 'Zrenjanin'
         },
         {
-            name: 'utorak',
-            shop: '624aef1770d0158eacad8a05'
-        }  
+            name: 'Roda',
+            address: 'Sekspirova bb',
+            city: 'Novi Sad'
+        }
+             
     ]
     
-List.insertMany(newLists)
+Shop.insertMany(newShops)
         .then(res => {
             console.log(res)
         })

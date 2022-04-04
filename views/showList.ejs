@@ -8,13 +8,19 @@
 </head>
 <body>
     <h1><%= list.name %></h1>
-    <a href="/lists/<%= list._id %>/edit">Edit</a>
+    <a href="/lists/<%= list._id %>/edit">Edit List</a>
+    <a href="/lists/"></a>
     <ul>
+        <% if(list.items) { %>
         <% for(let i = 0; i < list.items.length; i ++) { %> 
             <li>
                 <a href=""><%= list.items[i] %> </a>
             </li>
+        <% } %>
+        <% } else { %> 
+            <li>No items</li>
         <% } %> 
+
     </ul>
 
     <a href="/lists">Home</a>
